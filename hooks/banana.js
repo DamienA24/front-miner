@@ -34,6 +34,7 @@ export const useBanaStats = (
         const ethToUsd = data.ethereum.usd;
         const tvlDollars =
           parseInt(ethers.utils.formatEther(balance)) * ethToUsd;
+        console.log("tvlDollars", tvlDollars);
         setStats({
           pendingRewards: printers,
           accTokenPerShare: miners,
