@@ -28,9 +28,10 @@ export const useBanaStats = (
         const printers = await contract.getMyPrinters({ from: account });
 
         const tvlDollars = parseFloat(ethers.utils.formatEther(balance)) * 0.73;
+        const minerss = ethers.utils.formatEther(miners);
         setStats({
           pendingRewards: printers,
-          accTokenPerShare: miners,
+          miners: minerss,
           tvl: balance,
           tvlDollars: tvlDollars.toFixed(2),
         });
@@ -90,10 +91,10 @@ export const claimVault = async (bananaContract) => {
   }
 };
 
-export const compoundVault = async (bananaContract) => {
+export const compoundVault = async (bananaContract, ref) => {
   if (bananaContract.signer) {
     try {
-      const tx = await bananaContract.compound();
+      const tx = await bananaContract.compound(ref);
       return await tx.wait();
     } catch (e) {
       console.log(e);
