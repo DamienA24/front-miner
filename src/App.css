@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "playBold";
+  src: url("../fonts/Play-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "playRegular";
+  src: url("../fonts/Play-Regular.ttf") format("truetype");
+}
+
+.App {
+  text-align: center;
+  font-family: "playBold";
+}
+
+p {
+    font-family: "playRegular";
+    font-weight: 600;
+}
+.button-c:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+.card-data {
+  border-radius: 20px;
+  background-color: rgba(000000, 000000, 000000, 0.65);
+  padding: 20px;
+  color:white
+}
+
+.container-buy-matic {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.img-punk {
+  width: 150px;
+    float: left;
+    border-radius: 80px;
+}
+
+.container-info {
+  margin-top: 20px;
+}
+
+a.my-button {
+  background: linear-gradient(to right, #00d4ff, #fd06b7);
+  background-color: #00d4ff;
+  color: #fff;
+  font-family: Courier;
+  font-size: 18px;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: none;
+  padding: 14px 15px;
+  border: 0px solid #000;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+a.my-button:hover {
+  background: linear-gradient(to right, #51d9ff, #fd51bf);
+  background-color: #51d9ff;
+}
+
+a.my-button:active {
+  transform: scale(0.95);
+}
+
+.container-claim-compound {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 105px;
+}
+
+.container-referral {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 60%;
+}
+
+.container-common {
+  display: flex;  
+  justify-content: center;
+  align-content: center;      
+}
+
+
+
+.container-data-contract {
+  border: 2px solid #fd51bf;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.bg-dapp {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(253, 6, 183, 1) 41%, rgba(0, 212, 255, 1) 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container-global {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-data {
+  width: 60%;
+}
+
+.container-data-contract {
+  width: 60%;
+}
+
+.stats-contract {
+  margin-top: 20px;
+}
+
+@media (max-width: 400px) {
+  .container-data {
+  width: 100%;  
+  }
+  .container-data-contract {
+      width: 100%;
+  }
+  .container-referral {
+    width: 100%;
+  }
+    .img-punk{
+      width: 60px;
+    }
+}
+.referral-link {
+  background: linear-gradient(to right, #00d4ff, #fd06b7);
+  background-color: #00d4ff;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  color: #fff;
+  font-family: "playRegular";
+}
+.icons {
+  cursor: pointer;
+}
+
+.container-footer {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0px;
+  border-radius: 20px;
+    background-color: rgba(000000, 000000, 000000, 0.65);
+    padding: 20px;
+}
+
+.banana-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
