@@ -28,7 +28,11 @@ export const useBanaStats = (
         const printers = await contract.getMyPrinters({ from: account });
 
         const tvlDollars = parseInt(ethers.utils.formatEther(balance)) * 0.73;
-
+        console.log(
+          "parseInt(ethers.utils.formatEther(balance",
+          parseInt(ethers.utils.formatEther(balance))
+        );
+        console.log(balance);
         console.log("tvlDollars", tvlDollars);
         setStats({
           pendingRewards: printers,

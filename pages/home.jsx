@@ -49,7 +49,7 @@ export const Home = () => {
   const [amountToDeposit, setAmountToDeposit] = useState(0);
   const [balanceBNB, setBalanceBNB] = useState(BigNumber.from(0));
 
-  console.log(accTokenPerShare.toString());
+  //console.log(accTokenPerShare.toString());
 
   useEffect(() => {
     const fetch = async () => {
