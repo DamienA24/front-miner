@@ -27,18 +27,12 @@ export const useBanaStats = (
         const miners = await contract.getMyMiners({ from: account });
         const printers = await contract.getMyPrinters({ from: account });
 
-        const tvlDollars = parseInt(ethers.utils.formatEther(balance)) * 0.73;
-        console.log(
-          "parseInt(ethers.utils.formatEther(balance",
-          parseInt(ethers.utils.formatEther(balance))
-        );
-        console.log(balance);
-        console.log("tvlDollars", tvlDollars);
+        const tvlDollars = parseFloat(ethers.utils.formatEther(balance)) * 0.73;
         setStats({
           pendingRewards: printers,
           accTokenPerShare: miners,
           tvl: balance,
-          tvlDollars: tvlDollars,
+          tvlDollars: tvlDollars.toFixed(2),
         });
       } catch (e) {
         console.log(e);
