@@ -27,13 +27,8 @@ export const useBanaStats = (
         const miners = await contract.getMyMiners({ from: account });
         const printers = await contract.getMyPrinters({ from: account });
 
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-        );
-        const data = await response.json();
-        const ethToUsd = data.ethereum.usd;
-        const tvlDollars =
-          parseInt(ethers.utils.formatEther(balance)) * ethToUsd;
+        const tvlDollars = parseInt(ethers.utils.formatEther(balance)) * 0.73;
+
         console.log("tvlDollars", tvlDollars);
         setStats({
           pendingRewards: printers,
