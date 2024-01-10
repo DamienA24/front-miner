@@ -67,10 +67,11 @@ export const Home = () => {
     if (account && amountToDeposit > 0 && chainId == CHAIND_ID) {
       let params = new URL(document.location).searchParams;
       let ref = params.get("ref");
+      const checkRef = ref ?? account;
       const tx = await depositVault(
         bananaContract,
         ethers.utils.parseEther(amountToDeposit.toString()),
-        ref
+        checkRef
       );
       if (tx) {
         setUpdate(update + 1);
@@ -243,11 +244,13 @@ export const Home = () => {
                   <div className="container-referral container-data-contract">
                     <p>REFERRAL LINK Earn 12% of MATIC</p>
                     <CopyToClipboard
-                      text={`https://mybananatree.xyz?ref=${account}`}
+                      text={`${window.location.origin}?ref=${account}`}
                       onCopy={(text) => alert(`copied: ${text}`)}
                       className="referral-link"
                     >
-                      <button>https://mybananatree.xyz?ref={account}</button>
+                      <button>
+                        {window.location.origin}?ref={account}
+                      </button>
                     </CopyToClipboard>
                   </div>
                 </div>
