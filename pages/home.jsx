@@ -38,7 +38,7 @@ export const Home = () => {
 
   const bananaContract = useBananaContract(library);
 
-  const { tvl, tvlDollars, accTokenPerShare, pendingRewards } = useBanaStats(
+  const { tvl, tvlDollars, miners, pendingRewards } = useBanaStats(
     library,
     account,
     refresh,
@@ -48,8 +48,6 @@ export const Home = () => {
   );
   const [amountToDeposit, setAmountToDeposit] = useState(0);
   const [balanceBNB, setBalanceBNB] = useState(BigNumber.from(0));
-
-  console.log(accTokenPerShare.toString());
 
   useEffect(() => {
     const fetch = async () => {
@@ -69,10 +67,11 @@ export const Home = () => {
     if (account && amountToDeposit > 0 && chainId == CHAIND_ID) {
       let params = new URL(document.location).searchParams;
       let ref = params.get("ref");
+      const checkRef = ref ?? account;
       const tx = await depositVault(
         bananaContract,
         ethers.utils.parseEther(amountToDeposit.toString()),
-        ref
+        checkRef
       );
       if (tx) {
         setUpdate(update + 1);
@@ -84,7 +83,10 @@ export const Home = () => {
 
   const compound = async () => {
     if (account) {
-      const tx = await compoundVault(bananaContract);
+      let params = new URL(document.location).searchParams;
+      let ref = params.get("ref");
+      const checkRef = ref ?? account;
+      const tx = await compoundVault(bananaContract, checkRef);
       if (tx) {
         setUpdate(update + 1);
       } else {
@@ -148,6 +150,10 @@ export const Home = () => {
                         {parseFloat(ethers.utils.formatEther(tvl)).toFixed(2)}{" "}
                         MATIC
                       </p>
+                    </div>
+                    <div className="banana-data">
+                      <p>MINERS</p>
+                      <p>{miners}</p>
                     </div>
                     <div className="banana-data">
                       <p>WALLET</p>
@@ -238,11 +244,13 @@ export const Home = () => {
                   <div className="container-referral container-data-contract">
                     <p>REFERRAL LINK Earn 12% of MATIC</p>
                     <CopyToClipboard
-                      text={`https://mybananatree.xyz?ref=${account}`}
+                      text={`${window.location.origin}?ref=${account}`}
                       onCopy={(text) => alert(`copied: ${text}`)}
                       className="referral-link"
                     >
-                      <button>https://mybananatree.xyz?ref={account}</button>
+                      <button>
+                        {window.location.origin}?ref={account}
+                      </button>
                     </CopyToClipboard>
                   </div>
                 </div>

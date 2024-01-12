@@ -27,18 +27,13 @@ export const useBanaStats = (
         const miners = await contract.getMyMiners({ from: account });
         const printers = await contract.getMyPrinters({ from: account });
 
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-        );
-        const data = await response.json();
-        const ethToUsd = data.ethereum.usd;
-        const tvlDollars =
-          parseInt(ethers.utils.formatEther(balance)) * ethToUsd;
+        const tvlDollars = parseFloat(ethers.utils.formatEther(balance)) * 0.73;
+        const minerss = ethers.utils.formatEther(miners);
         setStats({
           pendingRewards: printers,
-          accTokenPerShare: miners,
+          miners: minerss,
           tvl: balance,
-          tvlDollars: tvlDollars,
+          tvlDollars: tvlDollars.toFixed(2),
         });
       } catch (e) {
         console.log(e);
@@ -96,10 +91,10 @@ export const claimVault = async (bananaContract) => {
   }
 };
 
-export const compoundVault = async (bananaContract) => {
+export const compoundVault = async (bananaContract, ref) => {
   if (bananaContract.signer) {
     try {
-      const tx = await bananaContract.compound();
+      const tx = await bananaContract.compound(ref);
       return await tx.wait();
     } catch (e) {
       console.log(e);
