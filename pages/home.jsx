@@ -263,7 +263,7 @@ export const Home = () => {
             <div className="container-footer">
               <div className="icons">
                 <a
-                  href="https://twitter.com/mybananatree"
+                  href="https://twitter.com/MatiCraftPonzi"
                   target="_blank"
                   rel="noreferrer"
                   width="180"
@@ -276,7 +276,7 @@ export const Home = () => {
               </div>
               <div className="icons">
                 <a
-                  href="https://t.me/mybananatree"
+                  href="https://polygonscan.com/address/0xf3f1db768ec8e1fdf5eb829dd0ca0d94f5d96caa"
                   target="_blank"
                   rel="noreferrer"
                 >

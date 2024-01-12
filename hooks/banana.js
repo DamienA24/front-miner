@@ -27,7 +27,7 @@ export const useBanaStats = (
         const miners = await contract.getMyMiners({ from: account });
         const printers = await contract.getMyPrinters({ from: account });
 
-        const tvlDollars = parseFloat(ethers.utils.formatEther(balance)) * 0.73;
+        const tvlDollars = parseFloat(ethers.utils.formatEther(balance)) * 0.92;
         const minerss = ethers.utils.formatEther(miners);
         setStats({
           pendingRewards: printers,
