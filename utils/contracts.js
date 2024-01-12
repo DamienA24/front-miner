@@ -1,6 +1,6 @@
 import { Contract } from "ethers";
 import { contracts } from "../constants/contract";
-import { CHAIN_ID, LOCAL, MUMBAI } from "../constants";
+import { CHAIN_ID, LOCAL, MUMBAI, POLYGON } from "../constants";
 import ABI from "../constants/abi/index.json";
 
 const getContract = (abi, address, signer) => {
@@ -8,5 +8,5 @@ const getContract = (abi, address, signer) => {
 };
 
 export const getBananaContract = (signer) => {
-  return getContract(ABI, contracts.BANANA[MUMBAI], signer);
+  return getContract(ABI, contracts.BANANA[POLYGON], signer);
 };

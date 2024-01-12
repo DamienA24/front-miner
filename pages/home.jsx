@@ -20,7 +20,7 @@ import punk from "../src/assets/punk.png";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const CHAIND_ID = 80001;
+const CHAIND_ID = 137;
 export const Home = () => {
   const { account, chainId, library } = useWeb3React();
   const [update, setUpdate] = useState(0);
@@ -112,8 +112,12 @@ export const Home = () => {
         <div className="container-global">
           <div className="container-info">
             <img src={punk} className="img-punk" />
+
             <h1>MATICraft: Forge Your Digital Fortune</h1>
             <h2>From mines to MATIC, fast!</h2>
+          </div>
+          <div className="container-contract-verified">
+            <p>Contract audited and verified! 🎉 🍸</p>
           </div>
           <div className="container-data">
             <div className="card-data">

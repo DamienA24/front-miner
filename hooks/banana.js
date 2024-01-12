@@ -1,7 +1,7 @@
 import { BigNumber, ethers } from "ethers";
 import { contracts } from "../constants/contract";
 import { useEffect, useState } from "react";
-import { CHAIN_ID, LOCAL, MUMBAI } from "../constants";
+import { CHAIN_ID, LOCAL, MUMBAI, POLYGON } from "../constants";
 import { MultiCall } from "@indexed-finance/multicall";
 import ABI from "../constants/abi/index.json";
 
@@ -23,7 +23,7 @@ export const useBanaStats = (
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const balance = await library.getBalance(contracts.BANANA[MUMBAI]);
+        const balance = await library.getBalance(contracts.BANANA[POLYGON]);
         const miners = await contract.getMyMiners({ from: account });
         const printers = await contract.getMyPrinters({ from: account });
 
@@ -40,7 +40,7 @@ export const useBanaStats = (
       }
     };
 
-    if (account && library && MUMBAI === chainId) {
+    if (account && library && POLYGON === chainId) {
       fetchData();
     }
   }, [library, account, chainId, refresh, update]);
